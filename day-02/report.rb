@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 class Report
-  def initialize(line)
-    @levels = line.split(/\s+/).map(&:to_i)
+  def self.from_line(line)
+    new line.split(/\s+/).map(&:to_i)
+  end
+
+  def initialize(levels)
+    @levels = levels
   end
 
   def error
