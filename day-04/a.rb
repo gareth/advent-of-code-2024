@@ -7,6 +7,10 @@ class Wordsearch
     new(lines)
   end
 
+  def self.directions
+    9.times.map { |i| [(i / 3) - 1, (i % 3) - 1] }.reject { |dir| dir == [0, 0] }.to_enum
+  end
+
   def initialize(lines)
     @lines = lines
     @width = @lines.first.size
@@ -53,10 +57,6 @@ class Wordsearch
 
     # puts format(' %<tx>i,%<ty>i/%<c>s: %<target>s', tx: target_x, ty: target_y, c: char, target:) if $DEBUG
     throw :result, 0 if target != char
-  end
-
-  def self.directions
-    9.times.map { |i| [(i / 3) - 1, (i % 3) - 1] }.reject { |dir| dir == [0, 0] }.to_enum
   end
 
   def to_s
