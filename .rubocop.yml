@@ -1,5 +1,11 @@
 AllCops:
   NewCops: enable
 
+# Not required for these daily, small-scope, throwaway scripts
 Style/Documentation:
   Enabled: False
+
+# Specifically not using snake case for the executable script files
+# This regex is the built-in snake_case regex with a - added
+Naming/FileName:
+  Regex: ^[-\d[[:lower:]]_.?!]+$
