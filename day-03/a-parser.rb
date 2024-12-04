@@ -14,7 +14,7 @@ end
 class MemoryProcessor < Parslet::Transform
   rule(int: simple(:i)) { Integer(i) }
   rule(mult: { left: simple(:l), right: simple(:r) }) { l * r }
-  rule(sequence(:x)) { x.inject(0) { |memo, i| memo + i } }
+  rule(sequence(:x)) { x.sum }
 end
 
 result = MemoryHandler.new.parse(ARGF.read)
