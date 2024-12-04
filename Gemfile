@@ -7,3 +7,4 @@ group :development do
   gem "guard-shell", "~> 0.7.2"
 end
 
+gem "parslet"
