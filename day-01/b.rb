@@ -11,4 +11,4 @@ end
 
 multipliers = right.group_by(&:itself).transform_values(&:size)
 
-puts left.inject(0) { |memo, l| memo + (l * multipliers.fetch(l, 0)) }
+puts(left.sum { |l| l * multipliers.fetch(l, 0) })

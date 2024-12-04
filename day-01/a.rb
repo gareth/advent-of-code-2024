@@ -9,4 +9,4 @@ while (line = gets)
   right << values[1].to_i
 end
 
-puts left.sort.zip(right.sort).inject(0) { |memo, (l, r)| memo + (l - r).abs }
+puts(left.sort.zip(right.sort).sum { |l, r| (l - r).abs })
