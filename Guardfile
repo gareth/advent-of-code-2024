@@ -9,7 +9,7 @@ guard :shell, all_on_start: true do
   watch(solution_file) do |m|
     if m[0]
       puts
-      if run m[0], :sample # rubocop: disable Style/IfUnlessModifier - the flow is relevant here
+      if run m[0], :sample, '-d' # rubocop: disable Style/IfUnlessModifier - the flow is relevant here
         run m[0], :real
       end
       nil
@@ -22,12 +22,12 @@ INPUT_FILES = {
   real: 'input'
 }.freeze
 
-def run(file, input_type)
+def run(file, input_type, *flags)
   dir = File.dirname(file)
   input = INPUT_FILES.fetch(input_type)
   input_filename = File.join(dir, input)
   return unless File.exist?(file) && File.exist?(input_filename)
 
   puts "Running #{file} with #{input_type} input"
-  system('ruby', file.to_s, input_filename)
+  system('ruby', *flags, file.to_s, input_filename)
 end
