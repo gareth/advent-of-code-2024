@@ -2,7 +2,9 @@
 # More info at https://github.com/guard/guard#readme
 
 guard :shell, all_on_start: true do
-  watch(/\b.\b\.rb$/) do |m|
+  solution_file = %r{/.\b(.*)\.rb$}
+
+  watch(solution_file) do |m|
     if m[0]
       puts
       if run m[0], :sample
